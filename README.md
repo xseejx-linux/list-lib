@@ -44,13 +44,13 @@ This structure allows the list to grow dynamically, unlike arrays, which have a 
    ```bash
    cd list-lib
    ```
-3. Compiling the Java Files:
+3. Building and Packaging the Java Project:
    ```bash
-   javac src/main/java/list/*.java
+   mvn clean package
    ```
 4. Running the Program:
    ```bash
-   java -cp src/main/java list.App
+   java -jar target/list-lib-1.0-SNAPSHOT.jar
    ```
 ---
 
