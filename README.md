@@ -56,8 +56,7 @@ This structure allows the list to grow dynamically, unlike arrays, which have a 
 
 ## **Future Improvements**
 - [ ] Implement an Iterator (allows to traverse the list using a for-each loop)
-- [ ] Support generics
-- [ ] Custom sorting using Comparator
+- [x] Support generics
 
 ---
 
