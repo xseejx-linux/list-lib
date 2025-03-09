@@ -4,7 +4,7 @@
 
 ## **Introduction**
 This project is a custom implementation of a **List** in Java. The primary goal of this project is to gain a deeper understanding of how lists work under the hood by building one from scratch.
-Unlike Java's built-in `ArrayList or `LinkedList`, this implementation is designed purely for educational purposes.
+Unlike Java's built-in `ArrayList` or `LinkedList`, this implementation is designed purely for educational purposes.
 
 The custom List is built using **nodes**, where each node contains
 - **obj** The object stored in the node.
