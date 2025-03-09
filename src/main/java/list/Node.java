@@ -28,6 +28,6 @@ public class Node <T> {
     public void setObj(T obj){ this.obj =obj;} 
                                             
     public Node<T> getLink() { return link; }     
-    public void setLink(Node<T> node){ this.link =node;}    
+    public void setLink(Node<T> node){ this.link =node;} 
 
 }

@@ -3,9 +3,9 @@ package list;
 
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws notSorted
     {
-        System.out.println( "-------------- ! Running App ! --------------\n\n" );
+        System.out.println( "-------------- ! Running Main App ! --------------\n\n" );
 
         List<String> list = new List<String>();
         List<String> list1;
@@ -23,27 +23,22 @@ public class App
         
         list1 = new List<String>(list);
         
-        //list.swap(list.getNode(0), list.getNode(3));
         
-        //System.out.println(list.getNode(1).getObj().toString());
-        // Sort with comparator - To be done
         try {
             list.sort(0);
         } catch (invalidModeParameter e) {
             e.printStackTrace();
         } 
-// Comparator
-/*
-Functional Interface Implementation:
-The Comparator<T> interface has a single method:
-`int compare(T o1, T o2);`
-The lambda '(a, b) -> a - b' is shorthand for an implementation of this method.
-It tells Java: "When you need to compare *two elements*, subtract the second from the first."
-*/
-        //list1.swap(list1.getNode(0), list1.getNode(list1.length-1));
+
+        list.isSorted();
+        list1.isSorted();
+
+        list.add(new Node<>("Node"), Flag.ENABLE_ADDSORTED);
+
+        
         System.out.println("List 0: "+list.printAllList());
         System.out.println("List 1: "+list1.printAllList());
 
-        System.out.println( "\n\n-------------- ! Stopped App ! --------------" );
+        System.out.println( "\n\n-------------- ! Stopped Main App ! --------------" );
     }
 }

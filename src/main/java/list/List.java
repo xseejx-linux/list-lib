@@ -59,6 +59,28 @@ public class List <T extends Comparable<T>> {
         support.setLink(new Node<T>(n.getObj(), support.getLink()));
         length++; 
     }
+    public void add(Node<T> n, Flag... flags) throws notSorted{
+        for (Flag flag : flags) {
+            switch (flag) {
+                case ENABLE_ADDSORTED:{
+                    if(!isSorted()[0])
+                        throw new notSorted();
+            
+                    int modeSort = isSorted()[1] ? 0:1;
+                    add(n);
+                    try {
+                        sort(modeSort);// if true ascending 0 1 3   - 0 for ascending
+                    } catch (invalidModeParameter e) {}
+                    break; 
+                }           
+                default:
+                System.out.println("WARNING: Flag '" + flag + "' is not recognized or not applicable in this context.");
+                    break;
+            }
+        }
+        
+        return;
+    }
     // Remove
     public void remove(int index) throws IndexOutOfBoundsException, isEmpty{
         if(isEmpty())
@@ -208,6 +230,21 @@ public class List <T extends Comparable<T>> {
                 j++;
             }                
         }while(!sorted);
+    }
+    public boolean[] isSorted(){
+        int counter = 1;
+        for(int i = 0; i<length-1; i++){
+            try {                
+                if(getNode(i).getObj().compareTo(getNode(i+1).getObj())>0){
+                    counter++;
+                }
+            } catch (IndexOutOfBoundsException e) {
+                
+            }
+        }
+        // if counter == 1 --> sorted ascending
+        return new boolean[] {(counter==length || counter == 1), (counter == 1)};
+        
     }
     // Print
     public String printAllList(){
