@@ -1,8 +1,8 @@
 package list;
 
 
-public class List {
-    private Node head;
+public class List <T extends Comparable<T>> {
+    private Node <T> head;
     private int length;
 
     public List(){
@@ -10,36 +10,36 @@ public class List {
         length = 0;
     }
 
-    public List(List l){
-        Node support = l.head;
+    public List(List <T> l){
+        Node<T> support = l.head;
         length = 0;
         head = null;
         while (support!=null) {
-            this.add(new Node(support.getObj()));
+            this.add(new Node<T>(support.getObj()));
             support = support.getLink();
         }
     }
 
     // Add
-    public void add(Node n){
+    public void add(Node<T> n){
         length++;
         if(head == null){
-            head = new Node(n.getObj(),null);
+            head = new Node<T>(n.getObj(),null);
             return;
         }
         if(head.getLink() == null){
-            head.setLink(new Node(n));
+            head.setLink(new Node<T>(n));
             return;
         }
 
-        Node support = head;
+        Node<T> support = head;
         while (support.getLink()!=null) {
             support = support.getLink();
         }
-        support.setLink(new Node(n));
+        support.setLink(new Node<T>(n));
         return;   
     }
-    public void add(Node n, int index) throws IndexOutOfBoundsException{
+    public void add(Node<T> n, int index) throws IndexOutOfBoundsException{
         if(index>length){
             throw new IndexOutOfBoundsException();
         }
@@ -48,15 +48,15 @@ public class List {
             if(index>length) throw new IndexOutOfBoundsException();            
         }
         if(index == 0){
-            head = new Node(n.getObj(), head);
+            head = new Node<T>(n.getObj(), head);
             length++;
             return;
         }
-        Node support = head;
+        Node<T> support = head;
         for(int i = 0; i<index-1; i++){
             support = support.getLink();
         }
-        support.setLink(new Node(n.getObj(), support.getLink()));
+        support.setLink(new Node<T>(n.getObj(), support.getLink()));
         length++; 
     }
     // Remove
@@ -73,21 +73,21 @@ public class List {
         if(index == 0){
             if(head.getLink()==null){head = null; return;}
                 
-            head = new Node(head.getLink().getObj(), head.getLink().getLink());
+            head = new Node<T>(head.getLink().getObj(), head.getLink().getLink());
             length--; 
             return;
         }
-        Node support = head;
+        Node<T> support = head;
         for(int i = 0; i<index-1; i++){
             support = support.getLink();
         }        
         support.setLink(support.getLink().getLink());
         length--; 
     }
-    public void remove(Node n) throws isEmpty{
+    public void remove(Node<T> n) throws isEmpty{
         if(isEmpty())
             throw new isEmpty();
-        Node support = head;
+        Node<T> support = head;
         int i = 0;
         while (support!=null) {
             if(support.getObj().equals(n.getObj())){
@@ -99,10 +99,10 @@ public class List {
         }
         
     }
-    public void removeAll(Node n) throws isEmpty{
+    public void removeAll(Node<T> n) throws isEmpty{
         if(isEmpty())
             throw new isEmpty();
-        Node support = head;
+        Node<T> support = head;
         int i = 0;
         while (support!=null) {
             if(support.getObj().equals(n.getObj())){
@@ -140,8 +140,8 @@ public class List {
         
     }
     //
-    public int indexOf(Node n){
-        Node support = head;
+    public int indexOf(Node<T> n){
+        Node<T> support = head;
         int i = 0;
         while (support!=null) {
             if(support.getObj().equals(n.getObj())){
@@ -152,8 +152,8 @@ public class List {
         }
         return -1;
     }
-    public Node getNode(int index) throws IndexOutOfBoundsException{
-        Node support = head;
+    public Node<T> getNode(int index) throws IndexOutOfBoundsException{
+        Node<T> support = head;
         int i = 0;
         while (support!=null) {
             if(index == i){
@@ -164,7 +164,7 @@ public class List {
         }
         throw new IndexOutOfBoundsException();
     }
-    public void swap(Node n, Node n1){
+    public void swap(Node<T> n, Node<T> n1){
         int index_n = indexOf(n); 
         int index_n1 = indexOf(n1); 
         try {
@@ -211,7 +211,7 @@ public class List {
     }
     // Print
     public String printAllList(){
-        Node temp = head;
+        Node<T> temp = head;
         String s = "";
         while (temp!=null) {
             s+="["+temp.getObj().toString()+"]" + ((temp.getLink()==null) ? "":", ");

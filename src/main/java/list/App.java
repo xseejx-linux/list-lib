@@ -7,13 +7,13 @@ public class App
     {
         System.out.println( "-------------- ! Running App ! --------------\n\n" );
 
-        List list = new List();
-        List list1;
+        List<String> list = new List<String>();
+        List<String> list1;
 
-        Node node_0 = new Node("Node 0");
-        Node node_1 = new Node("Node 1");
-        Node node_2 = new Node("Node 2");
-        Node node_3 = new Node("Node 3");
+        Node<String> node_0 = new Node<String>("Node 0");
+        Node<String> node_1 = new Node<String>("Node 1");
+        Node<String> node_2 = new Node<String>("Node 2");
+        Node<String> node_3 = new Node<String>("Node 3");
 
         list.add(node_3);
         list.add(node_2);
@@ -21,7 +21,7 @@ public class App
         list.add(node_0);
         System.out.println(list.printAllList());
         
-        list1 = new List(list);
+        list1 = new List<String>(list);
         
         //list.swap(list.getNode(0), list.getNode(3));
         
